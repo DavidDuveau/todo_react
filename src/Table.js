@@ -1,12 +1,20 @@
 import React, { Component } from "react";
+import "./Table.css";
 
 const TBody = (props) => {
+  const handleCheck = (event) => {
+    props.handleCheck(
+      event.target.checked,
+      parseInt(event.target.getAttribute("index"))
+    );
+  };
   const tableRow = props.taskData.map((task, index) => {
+    const isChecked = task.checked ? "checked" : "";
     return (
       <tr key={index}>
-        <td>{task.aFaire}</td>
+        <td className={isChecked}>{task.task}</td>
         <td>
-          <input type="checkbox" checked={task.isChecked} />
+          <input type="checkbox" onChange={handleCheck} index={index} />
         </td>
       </tr>
     );

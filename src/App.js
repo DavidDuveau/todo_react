@@ -11,15 +11,24 @@ class App extends Component {
     this.setState({ tasks: [...this.state.tasks, task] });
   };
 
-  deleteTickedTasks = () => {
+  deleteTickedTasks = (index) => {
+    const { tasks } = this.state;
+    console.log(tasks);
     this.setState({
-      persons: [],
+      tasks: tasks.filter((task) => !task.checked),
     });
   };
 
-  handleCheck = () => {
+  handleCheck = (isChecked, index) => {
+    console.log(isChecked);
+    console.log(typeof index);
     this.setState({
-      isChecked: true,
+      tasks: this.state.tasks.map((task, i) => {
+        if (i === index) {
+          task.checked = isChecked;
+        }
+        return task;
+      }),
     });
   };
 

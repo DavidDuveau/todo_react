@@ -2,8 +2,8 @@ import React, { Component } from "react";
 
 class Form extends Component {
   initialState = {
-    aFaire: "",
-    isChecked: false,
+    task: "",
+    checked: false,
   };
 
   state = this.initialState;
@@ -29,16 +29,16 @@ class Form extends Component {
   };
 
   render() {
-    const { aFaire } = this.state;
+    const { task } = this.state;
     return (
       <div>
         <form onSubmit={this.submitForm}>
-          <label htmlFor="firstname">Prénom</label>
+          <label htmlFor="task">Nouvelle tâche</label>
           <input
             type="text"
-            name="aFaire"
-            id="aFaire"
-            value={aFaire}
+            name="task"
+            id="task"
+            value={task}
             onChange={this.handleChange}
           />
 
